@@ -23,7 +23,6 @@ public class Exo1 extends SetupTeardown{
 	@Test()
 	public void test() throws InterruptedException {
 		LOG.info("Exo 1");
-		
 /*
 		//Connexion	
 		pIdentification = new PageIdentification(driver);		
@@ -31,23 +30,11 @@ public class Exo1 extends SetupTeardown{
 		
 		//Deconnexion
 		pIdentification = pDashboard.deconnexion();
-	
-*/
-	}
-	@Test()
-	public void testz() throws InterruptedException {
-		LOG.info("Exo 1");
-
-		//Connexion
-		pIdentification = new PageIdentification(driver);
-		PageDashboard pDashboard = pIdentification.seConnecter(Constantes.loginUser, Constantes.loginMdp);
-
-		//Deconnexion
-		pIdentification = pDashboard.deconnexion();
+		*/
 
 
 	}
-	
+
 	
 
 
