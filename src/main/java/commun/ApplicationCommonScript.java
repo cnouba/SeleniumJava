@@ -1,14 +1,21 @@
 package main.java.commun;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationCommonScript{
@@ -73,4 +80,45 @@ public class ApplicationCommonScript{
 	public void changerPage(WebDriver driver) {
 		driver.switchTo().window(driver.getWindowHandle());
 	}
+// TODO: 07/03/2022
+	/**
+	 * Cette fonction permet d'ouvrir depuis n'importe lequel des navigateurs
+	 */
+
+	public static ThreadLocal<RemoteWebDriver> driver1 = new ThreadLocal<>();
+	public static void launchApp(String browserName) {
+		// String browserName = prop.getProperty("browser");
+		if (browserName.equalsIgnoreCase("Chrome")) {
+			WebDriverManager.chromedriver().setup();
+			// Set Browser to ThreadLocalMap
+			driver1.set(new ChromeDriver());
+		} else if (browserName.equalsIgnoreCase("FireFox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver1.set(new FirefoxDriver());
+		} else if (browserName.equalsIgnoreCase("IE")) {
+			WebDriverManager.iedriver().setup();
+			driver1.set(new InternetExplorerDriver());
+		}
+
+
+		/*
+		//Maximize the screen
+		getDriver().manage().window().maximize();
+		//Delete all the cookies
+		getDriver().manage().deleteAllCookies();
+		//Implicit TimeOuts
+		getDriver().manage().timeouts().implicitlyWait
+				(Integer.parseInt(prop.getProperty("implicitWait")), TimeUnit.SECONDS);
+		//PageLoad TimeOuts
+		getDriver().manage().timeouts().pageLoadTimeout
+				(Integer.parseInt(prop.getProperty("pageLoadTimeOut")),TimeUnit.SECONDS);
+		//Launching the URL
+		getDriver().get(prop.getProperty("url"));*/
+	}
+
+	public static WebDriver getDriver() {
+		// Get Driver from threadLocalmap
+		return driver1.get();
+	}
+
 }

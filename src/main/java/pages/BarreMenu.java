@@ -2,17 +2,24 @@ package main.java.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import main.java.commun.ApplicationCommonScript;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.FindBy;
 
 public class BarreMenu extends ApplicationCommonScript{
 	
 	//===========================================================================================================
 	//DECLARATIONS
 	//===========================================================================================================
-	
-	private By logoDashboard = By.xpath("//img[@src='/dashboard-icn.png']");
+
+	@FindBy(xpath="//img[@src='/dashboard-icn.png']")
+	private By logoDashboard;
+	// TODO: 08/03/2022 rete des Find By 
+
+	//private By logoDashboard = By.xpath("//img[@src='/dashboard-icn.png']");
 	private By logoCours = By.xpath("//img[@src='/cours-icn.png']");
 	private By logoCursus = By.xpath("//img[@src='/cursus-icn.png']");
 	private By logoDeconnexion = By.xpath("//img[@src='/logout-icn.png']");
@@ -54,7 +61,6 @@ public class BarreMenu extends ApplicationCommonScript{
 	 */
 	public PageCours cliquerOngletCours() {
 		LOG.info("Redirection vers la page 'Cours'");
-		
 		Actions actions = new Actions(driver);
 		actions.moveToElement(driver.findElement(logoCours)).click().build().perform();
 //		cliquerElement(logoCours, "logo cours");
