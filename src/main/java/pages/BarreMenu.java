@@ -17,7 +17,7 @@ public class BarreMenu extends ApplicationCommonScript{
 
 	@FindBy(xpath="//img[@src='/dashboard-icn.png']")
 	private By logoDashboard;
-	// TODO: 08/03/2022 rete des Find By 
+	// TODO: 08/03/2022 rete des Find By
 
 	//private By logoDashboard = By.xpath("//img[@src='/dashboard-icn.png']");
 	private By logoCours = By.xpath("//img[@src='/cours-icn.png']");

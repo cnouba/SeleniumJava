@@ -1,42 +1,36 @@
 package test.Exo;
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
+import main.java.pages.IndexPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import main.java.commun.Constantes;
 import main.java.commun.SetupTeardown;
-import main.java.pages.PageDashboard;
-import main.java.pages.PageIdentification;
-
-
 
 
 public class Exo1 extends SetupTeardown{
 
 	//Objectif : Automatiser la connexion a Tipoca
 	//Se déconnecter
-
-	
-	public PageIdentification pIdentification;
-
+private IndexPage indexPage;
 
 	@Test()
-	public void test() throws InterruptedException {
+	public void test() throws Throwable {
 
 		LOG.info("Exo 1");
+		IndexPage _indexPage = new IndexPage(driver);
+		_indexPage.clickOnMyAccount();
 
+	}
 
-/*
-		//Connexion	
-		pIdentification = new PageIdentification(driver);		
-		PageDashboard pDashboard = pIdentification.seConnecter(Constantes.loginUser, Constantes.loginMdp);
-		
-		//Deconnexion
-		pIdentification = pDashboard.deconnexion();
-		*/
+	@Test
+	public void verifyLogo() throws Throwable {
 
+		LOG.info("verifyLogo");
+		indexPage= new IndexPage(driver);
+		boolean result=indexPage.validateLogo();
+		Assert.assertTrue(result);
+		LOG.info("fin verifyLogo");
 
 	}
 
