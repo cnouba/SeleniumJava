@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+<suite name="Practice automation Testing">
+    <test name="Creation d'un compte">
+        <classes>
+            <class name="test.practiceauto.AccountCreatePageTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Connexion">
+        <classes>
+            <class name="test.practiceauto.LoginPageTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Index">
+        <classes>
+            <class name="test.practiceauto.IndexPageTest">
+            </class>
+        </classes>
+    </test>
+</suite>
+
+

@@ -1,6 +1,7 @@
 package main.java.commun;
 
 
+import main.java.utility.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -8,39 +9,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
+import main.java.utility.ConfigFileReader;
 
 
 
-
-
-
-public class ApplicationCommonScript {
+public class ApplicationCommonScript extends ConfigFileReader {
 	//=========================================================================================
 	//DECLARATIONS
 	//=========================================================================================
 
 	//WebDriver
-	protected WebDriver driver;
+	protected  WebDriver driver;
 	protected WebDriverWait wait;
+	private Properties properties;
+	private Properties data;
+	//public static ThreadLocal<RemoteWebDriver> driver1 = new ThreadLocal<>();
 
 	//Log
 	protected static final Logger LOG = LoggerFactory.getLogger("ApplicationCommonScript");
-
+	protected static final String pathCreateAccount = "src\\test\\resources\\data\\createAccountData\\Pracauto-US1.properties";
+	protected static final String pathLogin = "src\\test\\resources\\data\\createAccountData\\Pracauto-US2.properties";
 
 	//=========================================================================================
 	//METHODES
@@ -71,7 +67,7 @@ public class ApplicationCommonScript {
 	 * @param elementLocator
 	 */
 	public void cliquerElement(By elementLocator, String elementName) {
-		LOG.info("Clic sur " + elementName);
+		Log.info("Clic sur " + elementName);
 		verifierVisibiliteElement(elementLocator);
 		driver.findElement(elementLocator).click();
 	}
@@ -82,7 +78,7 @@ public class ApplicationCommonScript {
 	 * @param elementLocator
 	 */
 	public void saisirTexte(By elementLocator, String texte) {
-		LOG.info("Saisie de " + texte);
+		Log.info("Saisie de " + texte);
 		verifierVisibiliteElement(elementLocator);
 		driver.findElement(elementLocator).clear();
 		driver.findElement(elementLocator).sendKeys(texte);
@@ -116,36 +112,134 @@ public class ApplicationCommonScript {
 
 
 		//Ouverture du navigateur
-		LOG.info("Ouverture de Chrome");
+		Log.info("Ouverture de Chrome");
 		driver.manage().window().maximize();
 
 		//driver.get("https://tipoca-recette.sogelabs.com/login");
 	}
 
 
-		/*
-		//Maximize the screen
-		getDriver().manage().window().maximize();
-		//Delete all the cookies
-		getDriver().manage().deleteAllCookies();
-		//Implicit TimeOuts
-		getDriver().manage().timeouts().implicitlyWait
-				(Integer.parseInt(prop.getProperty("implicitWait")), TimeUnit.SECONDS);
-		//PageLoad TimeOuts
-		getDriver().manage().timeouts().pageLoadTimeout
-				(Integer.parseInt(prop.getProperty("pageLoadTimeOut")),TimeUnit.SECONDS);
-		//Launching the URL
-		getDriver().get(prop.getProperty("url"));*/
+	public   void SaisirCaractere (String xpath, String value){
 
-	@BeforeSuite
-	public static void loadConfig() throws IOException {
+		String val = value;
+		WebElement element = driver.findElement(By.cssSelector(xpath));
+		element.clear();
 
-		Properties prop = new Properties();
-		FileInputStream objfile = new FileInputStream(
-				System.getProperty("user.dir") + "\\Configuration\\Config.properties");
-
-		prop.load(objfile);
+		for (int i = 0; i < val.length(); i++){
+			char c = val.charAt(i);
+			String s = new StringBuilder().append(c).toString();
+			element.sendKeys(s);
+		}
 	}
 
-}
+	/***
+	 *
+	 * cette fonction permet de generer des valeur par data provider
+	 * @return
+	 */
+
+	public static   Object[][]  dataLoad(){
+		BufferedReader br = null;
+		String txtSplitBy = ",";
+		String[] dat= null;
+		String returnObj[][] = null;
+		ArrayList<String> content = new ArrayList<String>();
+		try {
+
+			String sCurrentLine;
+			int datalength = 0;
+			int listsize =0;
+
+			br = new BufferedReader(new FileReader("C:\\users\\cnouba\\Documents\\SOGETI-TAC\\seleniumJava\\src\\test\\resources\\createNewAccount\\Pracauto-69-CreateAccountWithExistantEmail.txt"));
+			//("user.dir")+"\\src\\test\\resources\\Pracauto-52-ValidUserPwd.txt")
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				String []test = sCurrentLine.split(txtSplitBy);
+				content.add(sCurrentLine);
+			}
+			for (String s : content) {
+				System.out.println(s);
+			}
+
+			listsize = content.size();
+			//recupere le nombre de parametre de la ligne (colone)
+			datalength = content.get(0).split(txtSplitBy).length;
+			returnObj = new String[listsize][datalength];
+
+			for (int i = 0; i<listsize; i++) {
+
+				dat = content.get(i).split(txtSplitBy);
+				for (int j=0; j< datalength ; j++) {
+					returnObj[i][j] = dat[j];
+				}
+
+			}
+
+		} catch (
+				IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return returnObj;
+	}
+
+	/***
+	 * cette fonction permet de lire charger un jeu de
+	 * @return
+	 */
+	public ConfigFileReader getCreateAccountData() {
+		Properties data = new Properties();
+		ConfigFileReader configFileReader = new ConfigFileReader("src\\test\\resources\\data\\createAccountData\\Pracauto-US1.properties");
+		return configFileReader;
+	}
+	public ConfigFileReader getLoginData() {
+		Properties data = new Properties();
+		ConfigFileReader configFileReader = new ConfigFileReader("src\\test\\resources\\data\\createAccountData\\Pracauto-US2.properties");
+		return configFileReader;
+	}
+
+
+	public ConfigFileReader getConfigReader(String path) {
+
+		Properties data = new Properties();
+		ConfigFileReader configFileReader = new ConfigFileReader(path);
+		return configFileReader;
+	}
+		public static String getRandomString(int i)
+		{
+			String theAlphaNumericS;
+			StringBuilder builder;
+
+			theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+					+ "0123456789";
+
+			//create the StringBuffer
+			builder = new StringBuilder(i);
+
+			for (int m = 0; m < i; m++) {
+
+				// generate numeric
+				int myindex
+						= (int)(theAlphaNumericS.length()
+						* Math.random());
+
+				// add the characters
+				builder.append(theAlphaNumericS
+						.charAt(myindex));
+			}
+
+			return builder.toString();
+		}
+
+	}
+
+
+
+
 

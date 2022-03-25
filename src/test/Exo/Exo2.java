@@ -5,9 +5,6 @@ import org.testng.annotations.Test;
 
 import main.java.commun.Constantes;
 import main.java.commun.SetupTeardown;
-import main.java.pages.PageIdentification;
-
-
 
 
 public class Exo2 extends SetupTeardown{

@@ -28,10 +28,23 @@ public class IndexPage extends ApplicationCommonScript {
 
     public LoginPage clickOnMyAccount() throws Throwable {
         myaccountPageSelector.click();
-        action.fluentWait(driver, logoSelector, 10);
+        //action.fluentWait(driver, logoSelector, 10);
         LoginPage loginPage = new LoginPage(driver);
         return loginPage;
 
+    }
+    public AccountCreationPage clickOnMyAccountCreation() throws Throwable {
+        myaccountPageSelector.click();
+        //action.fluentWait(driver, logoSelector, 10);
+       AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
+        return accountCreationPage;
+    }
+
+    public LoginPage clickOnMyAccountLogin() throws Throwable {
+        myaccountPageSelector.click();
+        //action.fluentWait(driver, logoSelector, 10);
+        LoginPage loginPage = new LoginPage(driver);
+        return loginPage;
     }
     public boolean validateLogo() throws Throwable {
         return logoSelector.isDisplayed();

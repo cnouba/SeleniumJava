@@ -1,6 +1,7 @@
 package test.practiceauto;
 
 import main.java.pages.IndexPage;
+import main.java.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,6 +10,7 @@ import main.java.commun.SetupTeardown;
 
 public class IndexPageTest extends SetupTeardown {
     private IndexPage indexPage;
+    private LoginPage loginPage;
 
     @Test()
     public void test() throws Throwable {

@@ -6,12 +6,6 @@ import org.testng.annotations.Test;
 
 import main.java.commun.Constantes;
 import main.java.commun.SetupTeardown;
-import main.java.pages.PageCours;
-import main.java.pages.PageCoursDetails;
-import main.java.pages.PageDashboard;
-import main.java.pages.PageIdentification;
-
-
 
 
 public class Exo3 extends SetupTeardown{

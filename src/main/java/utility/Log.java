@@ -2,10 +2,14 @@ package main.java.utility;
 
 import org.apache.log4j.Logger;
 
-public class Log {
+public class Log extends Logger {
 
     // Initialize Log4j logs
-    public static Logger Log = Logger.getLogger(Log.class.getName());
+    public static Logger Log = Logger.getLogger(main.java.utility.Log.class.getName());
+
+    protected Log(String name) {
+        super(name);
+    }
 
     public static void startTestCase(String sTestCaseName){
         Log.info("====================================="+sTestCaseName+" TEST START=========================================");

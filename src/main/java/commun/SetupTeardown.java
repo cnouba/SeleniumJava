@@ -1,19 +1,17 @@
 package main.java.commun;
 
 
+import main.java.utility.Log;
 import org.apache.log4j.BasicConfigurator;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
-import main.java.commun.ApplicationCommonScript;
 
 
 public class SetupTeardown extends ApplicationCommonScript{
@@ -40,7 +38,14 @@ public class SetupTeardown extends ApplicationCommonScript{
 
 		if(BrowserName.equalsIgnoreCase("chrome")){
 			//create chrome instance
-			driver = new ChromeDriver();
+
+			ChromeDriverService service = ChromeDriverService.createDefaultService();
+			System.setProperty("webdriver.chrome.verboseLogging", "false");
+
+			ChromeOptions options = new ChromeOptions();
+
+			driver = new ChromeDriver(service,options);
+
 		}
 		else if(BrowserName.equalsIgnoreCase("firefox")){
 			//create firefox instance
@@ -50,15 +55,16 @@ public class SetupTeardown extends ApplicationCommonScript{
 		}
 
 		//Ouverture du navigateur
-		LOG.info("Ouverture de Chrome");
+		Log.info("Ouverture de Chrome");
 		driver.manage().window().maximize();
 
 		driver.get(prop.getProperty("url"));
 	}
 
 	@AfterTest
+
 		public void teardown(){
 		driver.quit();
 	}
-	
+
 }
