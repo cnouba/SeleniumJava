@@ -20,8 +20,9 @@ public class AccountCreatePageTest extends SetupTeardown {
 
     public LoginPage loginPage;
     public AccountCreationPage accountCreationPage;
-// DataProviders dataProviders = new DataProviders();
 
+    String pathCreateAccount = "src\\test\\resources\\data\\createAccountData\\Pracauto-US1.txt";
+    ConfigFileReader getUs1Data = getAllData(pathCreateAccount);
 
     @Test//(dataProvider = "login", dataProviderClass = DataProviders.class)
     //pracauto-52
@@ -29,7 +30,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         HomePage homePage = indexPage.
                 clickOnMyAccountCreation()
-                .createNewAccount( getCreateAccountData().getData("user")+getRandomString(2),getCreateAccountData().getData("pwd"));
+                .createNewAccount( getUs1Data.getData("user")+getRandomString(2),getUs1Data.getData("pwd"));
         boolean result=homePage.validateAcountCreatePage();
         Assert.assertTrue(result);
     }
@@ -40,7 +41,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         AccountCreationPage accountCreationPage =indexPage.
                 clickOnMyAccountCreation()
-                .invalidCreateNewAccount(getCreateAccountData().getData("user1"),getCreateAccountData().getData("pwd1"));
+                .invalidCreateNewAccount(getUs1Data.getData("user1"),getUs1Data.getData("pwd1"));
         boolean result=accountCreationPage.isInValidateAcountCreatePage();
         Assert.assertTrue(result);
     }
@@ -51,7 +52,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         AccountCreationPage accountCreationPage =indexPage.
                 clickOnMyAccountCreation()
-                .invalidCreateNewAccount(getCreateAccountData().getData("user2"),getCreateAccountData().getData("pwd2"));
+                .invalidCreateNewAccount(getUs1Data.getData("user2"),getUs1Data.getData("pwd2"));
         String actualWeakPasswordMessage= accountCreationPage.getWeakPasswordMessage();
         String ExpectedWeakPasswordMessage = "The password should be at least seven";
         Assert.assertTrue(actualWeakPasswordMessage.contains(ExpectedWeakPasswordMessage));
@@ -63,7 +64,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         AccountCreationPage accountCreationPage =indexPage.
                 clickOnMyAccountCreation()
-                .invalidCreateNewAccount(getCreateAccountData().getData("user"),getCreateAccountData().getData("pwd"));
+                .invalidCreateNewAccount(getUs1Data.getData("user"),getUs1Data.getData("pwd"));
         String actualMessageError = accountCreationPage.getalreadyExistingAccount();
         String expectedMessageError= ("Error: An account is already registered");
         Assert.assertTrue(actualMessageError.contains(expectedMessageError));

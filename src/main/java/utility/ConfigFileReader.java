@@ -12,7 +12,7 @@ public class ConfigFileReader {
     private Properties properties;
     private Properties data;
     //private final String propertyFilePath = "src//test//resources//configuration.properties";
-    private final String propertyFilePath = "src//test//resources//data//createAccountData//Pracauto-US1.properties";
+    private final String propertyFilePath = "src//test//resources//data//createAccountData//Pracauto-US1.txt";
 
     public ConfigFileReader() {
         BufferedReader reader;

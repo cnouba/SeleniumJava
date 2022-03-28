@@ -35,9 +35,6 @@ public class ApplicationCommonScript extends ConfigFileReader {
 
 	//Log
 	protected static final Logger LOG = LoggerFactory.getLogger("ApplicationCommonScript");
-	protected static final String pathCreateAccount = "src\\test\\resources\\data\\createAccountData\\Pracauto-US1.properties";
-	protected static final String pathLogin = "src\\test\\resources\\data\\createAccountData\\Pracauto-US2.properties";
-
 	//=========================================================================================
 	//METHODES
 	//=========================================================================================
@@ -138,6 +135,49 @@ public class ApplicationCommonScript extends ConfigFileReader {
 	 * @return
 	 */
 
+
+	/***
+	 * cette fonction permet de lire charger un jeu de
+	 * @return
+	 */
+
+	public ConfigFileReader  getAllData(String path){
+		Properties data = new Properties();
+		ConfigFileReader configFileReader = new ConfigFileReader(path);
+		return configFileReader;
+
+	}
+
+
+		public static String getRandomString(int i)
+		{
+			String theAlphaNumericS;
+			StringBuilder builder;
+
+			theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+					+ "0123456789";
+
+			//create the StringBuffer
+			builder = new StringBuilder(i);
+
+			for (int m = 0; m < i; m++) {
+
+				// generate numeric
+				int myindex
+						= (int)(theAlphaNumericS.length()
+						* Math.random());
+
+				// add the characters
+				builder.append(theAlphaNumericS
+						.charAt(myindex));
+			}
+
+			return builder.toString();
+		}
+
+	}
+
+	/*
 	public static   Object[][]  dataLoad(){
 		BufferedReader br = null;
 		String txtSplitBy = ",";
@@ -187,57 +227,8 @@ public class ApplicationCommonScript extends ConfigFileReader {
 		}
 
 		return returnObj;
-	}
+	}*/
 
-	/***
-	 * cette fonction permet de lire charger un jeu de
-	 * @return
-	 */
-	public ConfigFileReader getCreateAccountData() {
-		Properties data = new Properties();
-		ConfigFileReader configFileReader = new ConfigFileReader("src\\test\\resources\\data\\createAccountData\\Pracauto-US1.properties");
-		return configFileReader;
-	}
-	public ConfigFileReader getLoginData() {
-		Properties data = new Properties();
-		ConfigFileReader configFileReader = new ConfigFileReader("src\\test\\resources\\data\\createAccountData\\Pracauto-US2.properties");
-		return configFileReader;
-	}
-
-
-	public ConfigFileReader getConfigReader(String path) {
-
-		Properties data = new Properties();
-		ConfigFileReader configFileReader = new ConfigFileReader(path);
-		return configFileReader;
-	}
-		public static String getRandomString(int i)
-		{
-			String theAlphaNumericS;
-			StringBuilder builder;
-
-			theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-					+ "0123456789";
-
-			//create the StringBuffer
-			builder = new StringBuilder(i);
-
-			for (int m = 0; m < i; m++) {
-
-				// generate numeric
-				int myindex
-						= (int)(theAlphaNumericS.length()
-						* Math.random());
-
-				// add the characters
-				builder.append(theAlphaNumericS
-						.charAt(myindex));
-			}
-
-			return builder.toString();
-		}
-
-	}
 
 
 

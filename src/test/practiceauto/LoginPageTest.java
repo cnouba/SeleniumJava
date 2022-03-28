@@ -4,6 +4,7 @@ import main.java.commun.SetupTeardown;
 import main.java.pages.HomePage;
 import main.java.pages.IndexPage;
 import main.java.pages.LoginPage;
+import main.java.utility.ConfigFileReader;
 import main.java.utility.Log;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,6 +15,12 @@ public class LoginPageTest extends SetupTeardown {
     private LoginPage loginPage;
    // private IndexPage indexPage;
     private HomePage homePage;
+
+    // get data from txt file
+
+    String pathData = "src\\test\\resources\\data\\createAccountData\\Pracauto-US2.txt";
+    ConfigFileReader getUs2Data = getAllData(pathData);
+
 
 
 
@@ -26,7 +33,7 @@ public class LoginPageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
        LOG.info("enter username and password");
        loginPage = indexPage.clickOnMyAccount();
-       homePage = loginPage.login(getLoginData().getData("user"),getLoginData().getData("pwd"),homePage);
+       homePage = loginPage.login(getUs2Data.getData("user"),getUs2Data.getData("pwd"),homePage);
        String ExpectedLogin = "Dashboard";
        String ActualLogin = homePage.getLoginMenuElement();
        Assert.assertTrue(ActualLogin.contains(ExpectedLogin));
@@ -42,7 +49,7 @@ public class LoginPageTest extends SetupTeardown {
         LOG.info("practice.automationtestingisopen");
         Log.info("test");
         loginPage = indexPage.clickOnMyAccountLogin();
-        loginPage.invLoginValidUser(getLoginData().getData("user1"),getLoginData().getData("pwd1"));
+        loginPage.invLoginValidUser(getUs2Data.getData("user1"),getUs2Data.getData("pwd1"));
         String  ActualInvalidUsername = loginPage.getLoginFail();
         System.out.println(ActualInvalidUsername);
        Assert.assertTrue(ActualInvalidUsername.contains(expectedInvalidUsername),"invalid user name");
@@ -58,7 +65,7 @@ public class LoginPageTest extends SetupTeardown {
         LOG.info("practice.automationtestingisopen");
         Log.info("test");
         loginPage = indexPage.clickOnMyAccountLogin();
-        loginPage.invLoginValidUser(getLoginData().getData("user22"),getLoginData().getData("pwd22"));
+        loginPage.invLoginValidUser(getUs2Data.getData("user22"),getUs2Data.getData("pwd22"));
         String  ActualInvalidUsername = loginPage.getLoginFail();
         String ExpectedInvalidUsername = " is incorrect.";
         Assert.assertTrue(ActualInvalidUsername.contains(ExpectedInvalidUsername),"invalid user name");
@@ -74,7 +81,7 @@ public class LoginPageTest extends SetupTeardown {
         LOG.info("practice.automationtestingisopen");
         Log.info("test");
         loginPage = indexPage.clickOnMyAccountLogin();
-        loginPage.invLoginValidUser(getLoginData().getData("user3"),getLoginData().getData("pwd3"));
+        loginPage.invLoginValidUser(getUs2Data.getData("user3"),getUs2Data.getData("pwd3"));
         // String  ActualInvalidUsername = loginPage.getLoginFail();
         // System.out.println(ActualInvalidUsername);
         // Assert.assertTrue(ActualInvalidUsername.contains(expectedInvalidUsername),"invalid user name");
@@ -89,7 +96,7 @@ public class LoginPageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         LOG.info("enter username and password");
         loginPage = indexPage.clickOnMyAccount();
-        homePage = loginPage.login(getLoginData().getData("user67"),getLoginData().getData("pwd67"),homePage);
+        homePage = loginPage.login(getUs2Data.getData("user67"),getUs2Data.getData("pwd67"),homePage);
         String ExpectedLogin = "Dashboard";
         String ActualLogin = homePage.getLoginMenuElement();
         homePage.logout();
@@ -105,7 +112,7 @@ public class LoginPageTest extends SetupTeardown {
         IndexPage indexPage = new IndexPage(driver);
         LOG.info("enter username and password");
         loginPage = indexPage.clickOnMyAccount();
-        homePage = loginPage.rememberlogin(getLoginData().getData("user"),getLoginData().getData("pwd"),homePage);
+        homePage = loginPage.rememberlogin(getUs2Data.getData("user"),getUs2Data.getData("pwd"),homePage);
         homePage.logout2();
         Boolean ActualLogin = loginPage.isIdRemember();
         Assert.assertTrue(ActualLogin);
