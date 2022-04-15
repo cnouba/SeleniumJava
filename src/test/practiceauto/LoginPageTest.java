@@ -1,5 +1,6 @@
 package test.practiceauto;
 
+import com.aventstack.extentreports.ExtentTest;
 import main.java.commun.SetupTeardown;
 import main.java.pages.HomePage;
 import main.java.pages.IndexPage;
@@ -9,12 +10,23 @@ import main.java.utility.Log;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import main.java.dataprovider.DataProviders;
+import org.testng.asserts.SoftAssert;
+
+import static main.java.utility.extentReports.ExtentTestManager.startTest;
+import java.lang.reflect.Method;
 
 public class LoginPageTest extends SetupTeardown {
 
     private LoginPage loginPage;
    // private IndexPage indexPage;
     private HomePage homePage;
+   private   Method method;
+    public ExtentTest getStart(Method method, String desc){
+        this.method = method;
+       return startTest(method.getName(), "Valid login with good user and wrong Password");
+
+    }
+
 
     // get data from txt file
 
@@ -22,13 +34,14 @@ public class LoginPageTest extends SetupTeardown {
     ConfigFileReader getUs2Data = getAllData(pathData);
 
 
+   // DataProviders dataProviders = new DataProviders();
 
 
-    DataProviders dataProviders = new DataProviders();
-
-    @Test//(dataProvider = "validLogin", dataProviderClass = DataProviders.class)
+    @Test(groups = {"priority"})//(dataProvider = "validLogin", dataProviderClass = DataProviders.class)
+   // startTest(method.getName(), "Invalid Login Scenario with invalid username and password.");
     public void  validLoginTest() throws Throwable {
-
+        //startTest(method.getName(), "Valid login with good user and wrong Password");
+        getStart(method, "Valid login with good user and wrong Password");
         System.out.println("hello");
         IndexPage indexPage = new IndexPage(driver);
        LOG.info("enter username and password");
@@ -41,8 +54,10 @@ public class LoginPageTest extends SetupTeardown {
 
     //pract auto 55 - login ivalide (ninexistant)
 
-    @Test//(dataProvider = "invalidLogin", dataProviderClass = DataProviders.class)
-    public void  invLoginTest() throws Throwable {
+    @Test(groups = {"priority"})//(dataProvider = "invalidLogin", dataProviderClass = DataProviders.class)
+    public void  invLoginTest(Method method) throws Throwable {
+        //startTest(method.getName(), " ");
+        getStart(method, "Valid login with good user and wrong Password");
         String expectedInvalidUsername= "Error: A user could not be found with this email address.";
         LOG.info("loginTest");
         IndexPage indexPage = new IndexPage(driver);
@@ -57,9 +72,11 @@ public class LoginPageTest extends SetupTeardown {
 
     }
     ////pract auto 57 - login user valide mot de passe incorect
-    @Test //
-    public void  validUserWrongPwdLoginTest() throws Throwable {
-        String expectedInvalidUsername= "Error: Please provide a valid email address.";
+    @Test(groups = {"priority"}) //
+    public void  validUserWrongPwdLoginTest(Method method) throws Throwable {
+        startTest(method.getName(), " ");
+       // String expectedInvalidUsername= "Error: Please provide a valid email address.";
+        getStart(method, "Valid login with good user and wrong Password");
         LOG.info("loginTest");
         IndexPage indexPage = new IndexPage(driver);
         LOG.info("practice.automationtestingisopen");
@@ -73,8 +90,10 @@ public class LoginPageTest extends SetupTeardown {
 
     }
 
-    @Test //
-    public void  sensibilityLoginTest() throws Throwable {
+    @Test(groups = {"priority"}) //
+    public void  sensibilityLoginTest(Method method) throws Throwable {
+        //startTest(method.getName(), "");
+        getStart(method, "Valid login with good user and wrong Password");
         String expectedInvalidUsername= "Error: Please provide a valid email address.";
         LOG.info("loginTest");
         IndexPage indexPage = new IndexPage(driver);
@@ -88,9 +107,11 @@ public class LoginPageTest extends SetupTeardown {
 
 
     }
-    @Test//(dataProvider = "validLogin", dataProviderClass = DataProviders.class)
+    @Test(groups = {"priority"})//(dataProvider = "validLogin", dataProviderClass = DataProviders.class)
     //Pracauto-67
-    public void  verifierHomePage() throws Throwable {
+    public void  verifierHomePage(Method method) throws Throwable {
+     //   startTest(method.getName(), "");
+        getStart(method, "Valid login with good user and wrong Password");
 
         System.out.println("Dashboard");
         IndexPage indexPage = new IndexPage(driver);
@@ -104,10 +125,11 @@ public class LoginPageTest extends SetupTeardown {
 
     }
 
-    @Test
+    @Test(groups = {"priority"})
     //cas de test 68
-    public void rememberMe()  throws Throwable{
-
+    public void rememberMe(Method method)  throws Throwable{
+        //startTest(method.getName(), "");
+        getStart(method, "Valid login with good user and wrong Password");
         System.out.println("hello");
         IndexPage indexPage = new IndexPage(driver);
         LOG.info("enter username and password");
@@ -115,7 +137,12 @@ public class LoginPageTest extends SetupTeardown {
         homePage = loginPage.rememberlogin(getUs2Data.getData("user"),getUs2Data.getData("pwd"),homePage);
         homePage.logout2();
         Boolean ActualLogin = loginPage.isIdRemember();
-        Assert.assertTrue(ActualLogin);
+        //Assert.assertTrue(ActualLogin);
+        SoftAssert softAssertion= new SoftAssert();
+        softAssertion.assertTrue(ActualLogin);
+
+
+
 
 
     }

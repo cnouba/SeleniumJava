@@ -1,55 +1,33 @@
 package main.java.utility;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Log extends Logger {
+public class Log {
+    //Initialize Log4j instance
+    private static final Logger Log = LogManager.getLogger(Log.class);
 
-    // Initialize Log4j logs
-    public static Logger Log = Logger.getLogger(main.java.utility.Log.class.getName());
-
-    protected Log(String name) {
-        super(name);
-    }
-
-    public static void startTestCase(String sTestCaseName){
-        Log.info("====================================="+sTestCaseName+" TEST START=========================================");
-    }
-
-    public static void endTestCase(String sTestCaseName){
-        Log.info("====================================="+sTestCaseName+" TEST END=========================================");
-    }
-
-    // Need to create below methods, so that they can be called
-
+    //Info Level Logs
     public static void info(String message) {
-
         Log.info(message);
-
     }
 
+    //Warn Level Logs
     public static void warn(String message) {
-
         Log.warn(message);
-
     }
 
-    public static void error(String message) {
-
-        Log.error(message);
-
+        //Error Level Logs
+        public static void error (String message){
+            Log.error(message);
+        }
+        //Fatal Level Logs
+        public static void fatal (String message){
+            Log.fatal(message);
+        }
+        //Debug Level Logs
+        public static void debug (String message){
+            Log.debug(message);
+        }
     }
-
-    public static void fatal(String message) {
-
-        Log.fatal(message);
-
-    }
-
-    public static void debug(String message) {
-
-        Log.debug(message);
-
-    }
-
-}
 

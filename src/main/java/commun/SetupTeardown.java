@@ -3,12 +3,12 @@ package main.java.commun;
 
 import main.java.utility.Log;
 import org.apache.log4j.BasicConfigurator;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -19,11 +19,15 @@ public class SetupTeardown extends ApplicationCommonScript{
 
 	public static Properties prop;
 
+	public WebDriver getDriver() {
+		return driver;
+	}
+
 
 	//@Parameters("browser")
 
-	@BeforeTest
-
+	@BeforeClass
+	@BeforeMethod
 	public void	setup() throws Exception {
 
 		BasicConfigurator.configure();
@@ -61,7 +65,15 @@ public class SetupTeardown extends ApplicationCommonScript{
 		driver.get(prop.getProperty("url"));
 	}
 
-	@AfterTest
+
+	@AfterMethod
+	public void cleanup(){
+		driver.quit();
+	}
+
+
+	@AfterClass
+
 
 		public void teardown(){
 		driver.quit();

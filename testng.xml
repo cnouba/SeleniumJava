@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+<suite name="Practice automation Testing" verbose="1" parallel="tests" thread-count="10">
+
+  <listeners>
+
+  <!-- <listener class-name="main.java.utility.testListener.AnnotationTransformer"/>-->
+    <listener class-name="main.java.utility.testListener.TestListener"/>
+  </listeners>
+  <test name="Exemple" >
+
+
+    <classes>
+      <class name="test.practiceauto.ShopPageTest"></class>
+    </classes>
+  </test>
+  <test name="Exemple1" >
+
+
+    <classes>
+      <class name="test.practiceauto.ShopPageTest"></class>
+    </classes>
+  </test>
+
+
+  <!--
+   <test name="Creation d'un compte">
+      <classes>
+          <class name="test.practiceauto.AccountCreatePageTest">
+          </class>
+      </classes>
+  </test>
+
+  <test name="Connexion">
+      <classes>
+          <class name="test.practiceauto.LoginPageTest">
+          </class>
+      </classes>
+  </test>
+
+  <test name="Index">
+      <classes>
+          <class name="test.practiceauto.IndexPageTest">
+          </class>
+      </classes>
+  </test>
+
+
+   -->
+
+</suite>
+
+
+

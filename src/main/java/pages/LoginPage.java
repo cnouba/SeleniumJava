@@ -133,7 +133,9 @@ public class LoginPage extends ApplicationCommonScript {
 
     public boolean isIdRemember(){
 
+        System.out.println(rememberme.isSelected()+"remember");
       return rememberme.isSelected();
+
     }
 
 

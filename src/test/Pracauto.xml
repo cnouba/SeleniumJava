@@ -3,7 +3,22 @@
 
 
 <suite name="Practice automation Testing">
-    <test name="Creation d'un compte">
+
+    <listeners>
+        <listener class-name="main.java.utility.testListener.TestListener"/>
+    </listeners>
+    <test thread-count="5" name="Exemple">
+
+
+        <classes>
+            <class name="test.practiceauto.ShopPageTest"> </class>
+
+        </classes>
+    </test>
+
+
+    <!--
+     <test name="Creation d'un compte">
         <classes>
             <class name="test.practiceauto.AccountCreatePageTest">
             </class>
@@ -23,6 +38,10 @@
             </class>
         </classes>
     </test>
+
+
+     -->
+
 </suite>
 
 

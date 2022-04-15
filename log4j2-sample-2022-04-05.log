@@ -1,0 +1,64 @@
+[INFO ] 2022-04-05 09:53:55.526 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:54:22.397 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:58:08.462 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:58:17.240 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:58:30.622 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:58:42.661 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:58:59.943 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:59:16.976 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:59:29.491 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 09:59:48.282 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:09:29.908 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:09:35.424 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:09:46.343 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:09:52.569 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:09:56.700 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:09:56.703 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:09:57.372 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 10:13:44.686 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:13:53.987 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:15:46.525 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:15:50.831 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:15:59.516 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:16:04.255 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:16:10.680 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:16:10.682 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:16:10.683 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 10:18:09.998 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:18:40.436 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:18:44.759 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:18:48.691 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:18:52.724 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:18:52.726 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:18:52.727 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 10:26:56.490 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:27:00.835 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:27:05.519 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:27:10.006 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:27:10.007 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:27:10.008 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 10:31:47.155 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:31:53.316 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:31:57.944 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:32:01.198 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:32:01.201 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:32:01.203 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 10:35:12.354 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 10:35:17.411 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 10:35:25.975 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 10:35:29.265 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:35:29.267 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 10:35:29.268 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 19:24:53.184 [main] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 19:25:16.766 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 19:25:20.140 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 19:25:26.011 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 19:25:32.345 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 19:25:32.382 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 19:25:32.383 [TestNG-tests-1] Log - I am in onFinish method Exemple
+[INFO ] 2022-04-05 19:26:20.293 [TestNG-tests-1] Log - I am in onStart method Exemple
+[INFO ] 2022-04-05 19:26:24.297 [TestNG-tests-1] Log - Ouverture de Chrome
+[INFO ] 2022-04-05 19:26:28.407 [TestNG-tests-1] Log - addArticleToCart test is starting.
+[INFO ] 2022-04-05 19:26:32.774 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 19:26:32.777 [TestNG-tests-1] Log - addArticleToCart test is failed.
+[INFO ] 2022-04-05 19:26:32.779 [TestNG-tests-1] Log - I am in onFinish method Exemple

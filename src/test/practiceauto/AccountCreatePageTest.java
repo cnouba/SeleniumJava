@@ -9,6 +9,7 @@ import main.java.pages.IndexPage;
 import main.java.pages.LoginPage;
 import main.java.utility.Log;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import main.java.utility.ConfigFileReader;
@@ -24,7 +25,18 @@ public class AccountCreatePageTest extends SetupTeardown {
     String pathCreateAccount = "src\\test\\resources\\data\\createAccountData\\Pracauto-US1.txt";
     ConfigFileReader getUs1Data = getAllData(pathCreateAccount);
 
-    @Test//(dataProvider = "login", dataProviderClass = DataProviders.class)
+    /*@BeforeMethod
+    public void teardown(){
+        driver.quit();
+    }
+
+    @AfterMethod
+    public void cleanup(){
+        driver.quit();
+    }*/
+
+
+    @Test(alwaysRun = true)//(dataProvider = "login", dataProviderClass = DataProviders.class)
     //pracauto-52
     public void validCreateAccount() throws Throwable {//String userToCreate, String pwdToCreate
         IndexPage indexPage = new IndexPage(driver);
@@ -35,7 +47,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         Assert.assertTrue(result);
     }
 
-    @Test//(dataProvider = "login", dataProviderClass = DataProviders.class)
+    @Test(alwaysRun = true)//(dataProvider = "login", dataProviderClass = DataProviders.class)
     //Pracauto-61
     public void nvUserNoPwdCreateAccount() throws Throwable {//String userToCreate, String pwdToCreate
         IndexPage indexPage = new IndexPage(driver);
@@ -46,7 +58,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         Assert.assertTrue(result);
     }
 
-    @Test//(dataProvider = "invalidlogin", dataProviderClass = DataProviders.class)
+    @Test(alwaysRun = true)//(dataProvider = "invalidlogin", dataProviderClass = DataProviders.class)
     //pracauto-56
     public  void invUserPwdCreateAccount() throws Throwable {//String userToCreate, String pwdToCreate
         IndexPage indexPage = new IndexPage(driver);
@@ -58,7 +70,7 @@ public class AccountCreatePageTest extends SetupTeardown {
         Assert.assertTrue(actualWeakPasswordMessage.contains(ExpectedWeakPasswordMessage));
     }
 
-    @Test//(dataProvider = "alreadyLogin", dataProviderClass = DataProviders.class)
+   @Test(alwaysRun = true)//(dataProvider = "alreadyLogin", dataProviderClass = DataProviders.class)
     //pracauto-69
     public  void exitLoginCreateAccount() throws Throwable {//String userToCreate, String pwdToCreate
         IndexPage indexPage = new IndexPage(driver);

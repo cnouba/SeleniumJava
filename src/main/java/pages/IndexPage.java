@@ -17,6 +17,11 @@ public class IndexPage extends ApplicationCommonScript {
     @FindBy(css = "#site-logo")
     private WebElement logoSelector;
 
+    @FindBy(css = "li[id='menu-item-40'] a")
+    private WebElement shoptPageSelector;
+
+
+
 
 
     public IndexPage(WebDriver driver) {
@@ -45,6 +50,15 @@ public class IndexPage extends ApplicationCommonScript {
         //action.fluentWait(driver, logoSelector, 10);
         LoginPage loginPage = new LoginPage(driver);
         return loginPage;
+    }
+
+    public ShopPage clickOnShopage() throws Throwable {
+        shoptPageSelector.click();
+        //action.fluentWait(driver, logoSelector, 10);
+        LoginPage loginPage = new LoginPage(driver);
+        ShopPage shopPage = new ShopPage(driver);
+        return shopPage;
+
     }
     public boolean validateLogo() throws Throwable {
         return logoSelector.isDisplayed();

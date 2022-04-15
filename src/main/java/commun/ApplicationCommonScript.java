@@ -41,7 +41,7 @@ public class ApplicationCommonScript extends ConfigFileReader {
 
 
 	/**
-	 * Cette fonction permet de vérifier qu'un element est bien visible
+	 * Cette fonction permet de vÃ©rifier qu'un element est bien visible
 	 *
 	 * @param elementLocator
 	 * @return
